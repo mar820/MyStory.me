@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Journey</title>
+
+    <meta name="description" content="Interactive CV - My journey as a web developer" />
+
+    <link rel="icon" href="images/MyStory.png"/>
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <!-- Here will be the structure that all pages share -->
+     <div class="flex flex-col min-h-screen">
+
+      <div class="flex justify-between items-center h-[60px] bg-gray-200">
+        <div class="menu">
+          <button class="nav-bar-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+
+        <div class="logo">
+          <a>MyStory.me</a>
+        </div>
+
+        <div class="profile-pic">
+          <p>Profile pic</p>
+        </div>
+      </div>
+
+      <div class="flex-1" id="different-pages">
+        <!-- Here enters the pther pages -->
+      </div>
+
+      <div class="flex items-center justify-center bg-gray-200 h-[60px]">
+        <p> Made with ❤️ from the planet we call Earth 🌍 </p>
+      </div>
+     </div>
+
+
+
+    <script>
+      let button = document.querySelector('.nav-bar-menu-btn');
+      button.addEventListener("click", () => {
+        button.classList.toggle("active");
+      })
+    </script>
+  </body>
+</html>

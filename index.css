@@ -1,0 +1,36 @@
+/* Navbar Menu Button */
+.nav-bar-menu-btn {
+  width: 40px;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-bar-menu-btn span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background-color: black;
+  border-radius: 2px;
+}
+
+.nav-bar-menu-btn.active span:nth-child(1){
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-bar-menu-btn.active span:nth-child(2){
+  opacity: 0;
+}
+
+.nav-bar-menu-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.nav-bar-menu-btn span {
+  transition: all 0.3s ease;
+}
+/* ========================================================================================================= */
