@@ -16,9 +16,9 @@
   </head>
   <body>
     <!-- Here will be the structure that all pages share -->
-     <div class="flex flex-col min-h-screen">
+    <div class="flex flex-col h-screen">
 
-      <div class="flex justify-between items-center h-[60px] bg-gray-200">
+      <div class="sticky top-0 z-50 flex justify-between items-center h-[60px] bg-gray-200">
         <div class="menu">
           <button class="nav-bar-menu-btn">
             <span></span>
@@ -36,14 +36,66 @@
         </div>
       </div>
 
-      <div class="flex-1" id="different-pages">
+      <div class="flex-1 min-h-0" id="different-pages">
+        <!-- PAGE 1 -->
+        <div class="page flex flex-col justify-center items-center gap-20 px-0 py-12">
+          <div class="flex items-center justify-center gap-6">
+            <svg viewBox="0 0 80 120" class="w-24 opacity-40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40 5 Q65 25 40 45 Q15 65 40 85 Q65 105 40 115" stroke="black" stroke-width="3" stroke-linecap="round"/>
+              <path d="M25 10 Q50 30 25 50 Q0 70 25 90 Q50 110 25 115" stroke="black" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+            </svg>
+
+            <div class="bg-white border border-gray-300 rounded-2xl px-14 py-7 shadow-sm text-center">
+              <h1 class="text-4xl font-semibold" style="font-family: Georgia, serif">
+                Hello my name is Marinos
+                <span class="inline-flex gap-1 ml-1 align-middle">
+                  <span class="dot" style="animation-delay: 0s">.</span>
+                  <span class="dot" style="animation-delay: 0.2s">.</span>
+                  <span class="dot" style="animation-delay: 0.4s">.</span>
+                </span>
+              </h1>
+            </div>
+
+            <svg viewBox="0 0 80 120" class="w-24 opacity-40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M40 5 Q15 25 40 45 Q65 65 40 85 Q15 105 40 115" stroke="black" stroke-width="3" stroke-linecap="round"/>
+              <path d="M55 10 Q30 30 55 50 Q80 70 55 90 Q30 110 55 115" stroke="black" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+            </svg>
+          </div>
+
+          <div class="bg-white border border-gray-300 rounded-2xl px-10 py-8 shadow-md w-full overflow-y-auto" style="max-width: 680px; max-height: 280px;">
+            <p class="text-xl italic font-semibold text-gray-700 mb-4">I am a Junior web developer ....</p>
+            <p class="text-base leading-relaxed text-gray-600">
+              With interest in digital assets trading, I worked as a Business Developer Intern at PrimeXBT for a period of 7 months.
+              I currently finished my studies at IEK AKMI as a web developer.
+              I am in love with Coding and more than ready to tackle new challenges working as a Web Developer!
+            </p>
+          </div>
+        </div>
+        <!-- PAGE 2 -->
+        <div class="page flex items-center justify-center">
+          <h1 class="text-4xl font-bold">My experiences...</h1>
+        </div>
+
+        <!-- PAGE 3 -->
+        <div class="page flex items-center justify-center">
+          <h1 class="text-4xl font-bold">More experiences...</h1>
+        </div>
+        <!-- PAGE 4 -->
+        <div class="page flex items-center justify-center">
+          <h1 class="text-4xl font-bold">Education and Training</h1>
+        </div>
+        <!-- PAGE 5 -->
+        <div class="page flex items-center justify-center">
+          <h1 class="text-4xl font-bold">Hobbies</h1>
+        </div>
+
         <!-- Here enters the pther pages -->
       </div>
 
-      <div class="flex items-center justify-center bg-gray-200 h-[60px]">
-        <p> Made with ❤️ from the planet we call Earth 🌍 </p>
+      <div class="sticky bottom-0 flex items-center justify-center bg-gray-200 h-[60px]">
+        <span> Made with ❤️ from the planet we call Earth 🌍 </span>
       </div>
-     </div>
+    </div>
 
 
 
