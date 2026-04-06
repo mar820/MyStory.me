@@ -1,109 +1,276 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Journey</title>
-
-    <meta name="description" content="Interactive CV - My journey as a web developer" />
-
-    <link rel="icon" href="images/MyStory.png"/>
+    <title>Marinos — Web Developer</title>
+    <meta name="description" content="Marinos Veisllari — Junior Web Developer Portfolio" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="index.js" defer></script>
   </head>
   <body>
-    <!-- Here will be the structure that all pages share -->
-    <div class="flex flex-col h-screen">
 
-      <div class="sticky top-0 z-50 flex justify-between items-center h-[60px] bg-gray-200">
-        <div class="menu">
-          <button class="nav-bar-menu-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-
-        <div class="logo">
-          <a>MyStory.me</a>
-        </div>
-
-        <div class="profile-pic">
-          <p>Profile pic</p>
-        </div>
+    <!-- NAV -->
+    <nav id="navbar">
+      <div class="nav-inner">
+        <button class="nav-bar-menu-btn" id="menuBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+        <span class="logo">MV<span class="logo-dot">.</span></span>
+        <div class="profile-circle" id="profileBtn" title="Profile">M</div>
       </div>
 
-      <div class="flex-1 min-h-0" id="different-pages">
-        <!-- PAGE 1 -->
-        <div class="page flex flex-col justify-center items-center gap-20 px-0 py-12">
-          <div class="flex items-center justify-center gap-6">
-            <svg viewBox="0 0 80 120" class="w-24 opacity-40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M40 5 Q65 25 40 45 Q15 65 40 85 Q65 105 40 115" stroke="black" stroke-width="3" stroke-linecap="round"/>
-              <path d="M25 10 Q50 30 25 50 Q0 70 25 90 Q50 110 25 115" stroke="black" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-            </svg>
+      <div class="dropdown" id="dropdown">
+        <a onclick="alert('GitHub: github.com/mar820\nLinkedIn: www.linkedin.com/in/marinos-veisllari/')">
+          <span class="dd-icon">↗</span> Socials
+        </a>
+        <a href="mailto:veisllarimarinos@gmail.com">
+          <span class="dd-icon">✉</span> Contact
+        </a>
+        <a onclick="alert('+30 698 180 84 35')">
+          <span class="dd-icon">☎</span> Phone
+        </a>
+        <a onclick="alert('🇬🇷 Greek · 🇬🇧 English · 🇦🇱 Albanian')">
+          <span class="dd-icon">◎</span> Languages
+        </a>
+      </div>
+    </nav>
 
-            <div class="bg-white border border-gray-300 rounded-2xl px-14 py-7 shadow-sm text-center">
-              <h1 class="text-4xl font-semibold" style="font-family: Georgia, serif">
-                Hello my name is Marinos
-                <span class="inline-flex gap-1 ml-1 align-middle">
-                  <span class="dot" style="animation-delay: 0s">.</span>
-                  <span class="dot" style="animation-delay: 0.2s">.</span>
-                  <span class="dot" style="animation-delay: 0.4s">.</span>
-                </span>
-              </h1>
-            </div>
+    <!-- PAGES CONTAINER -->
+    <div id="different-pages">
 
-            <svg viewBox="0 0 80 120" class="w-24 opacity-40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M40 5 Q15 25 40 45 Q65 65 40 85 Q15 105 40 115" stroke="black" stroke-width="3" stroke-linecap="round"/>
-              <path d="M55 10 Q30 30 55 50 Q80 70 55 90 Q30 110 55 115" stroke="black" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-            </svg>
-          </div>
-
-          <div class="bg-white border border-gray-300 rounded-2xl px-10 py-8 shadow-md w-full overflow-y-auto" style="max-width: 680px; max-height: 280px;">
-            <p class="text-xl italic font-semibold text-gray-700 mb-4">I am a Junior web developer ....</p>
-            <p class="text-base leading-relaxed text-gray-600">
-              With interest in digital assets trading, I worked as a Business Developer Intern at PrimeXBT for a period of 7 months.
-              I currently finished my studies at IEK AKMI as a web developer.
-              I am in love with Coding and more than ready to tackle new challenges working as a Web Developer!
+      <!-- PAGE 1 — HERO -->
+      <div class="page page-1">
+        <div class="hero-grid">
+          <div class="hero-left">
+            <p class="hero-label">Junior Web Developer</p>
+            <h1 class="hero-title">
+              Hello,<br>I'm <em>Marinos</em><span class="title-dots"><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></span>
+            </h1>
+            <div class="hero-line"></div>
+            <p class="hero-sub">
+              Based in Athens. Passionate about building digital experiences — from front-end interfaces to full-stack applications. Previously a Business Developer Intern at PrimeXBT.
             </p>
           </div>
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-badge">Available for work</div>
+              <p class="hero-card-text">
+                Recently finished at IEK AKMI as a web developer. Ready to tackle new challenges and bring ideas to life through code.
+              </p>
+              <div class="hero-card-stack">
+                <span>TypeScript</span><span>Angular</span><span>PHP</span><span>REST APIs</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- PAGE 2 -->
-        <div class="page flex items-center justify-center">
-          <h1 class="text-4xl font-bold">My experiences...</h1>
+        <div id="scroll-hint" class="scroll-hint">
+          <span>Scroll to explore</span>
+          <div class="scroll-line"></div>
         </div>
-
-        <!-- PAGE 3 -->
-        <div class="page flex items-center justify-center">
-          <h1 class="text-4xl font-bold">More experiences...</h1>
-        </div>
-        <!-- PAGE 4 -->
-        <div class="page flex items-center justify-center">
-          <h1 class="text-4xl font-bold">Education and Training</h1>
-        </div>
-        <!-- PAGE 5 -->
-        <div class="page flex items-center justify-center">
-          <h1 class="text-4xl font-bold">Hobbies</h1>
-        </div>
-
-        <!-- Here enters the pther pages -->
       </div>
 
-      <div class="sticky bottom-0 flex items-center justify-center bg-gray-200 h-[60px]">
-        <span> Made with ❤️ from the planet we call Earth 🌍 </span>
+      <!-- PAGE 2 — SKILLS & EXPERIENCE -->
+      <div class="page page-2">
+        <div class="page-header">
+          <span class="section-num">01</span>
+          <h2 class="section-title">Skills &amp; Experience</h2>
+        </div>
+
+        <div class="page2-body">
+          <div class="page2-intro">
+            <p>
+              Hands-on experience gained through real-world projects and an active internship, working across the full web stack.
+            </p>
+          </div>
+
+          <div class="skills-container" id="roadmap">
+            <div class="skills-row">
+              <div class="skill-card">HTML</div>
+              <div class="skill-card">CSS</div>
+              <div class="skill-card">JavaScript</div>
+              <div class="skill-card">Git</div>
+            </div>
+            <div class="skills-row skills-row--right">
+              <div class="skill-card">TypeScript</div>
+              <div class="skill-card">Angular</div>
+              <div class="skill-card">PHP</div>
+              <div class="skill-card">CMS</div>
+            </div>
+            <div class="skills-row">
+              <div class="skill-card">REST APIs</div>
+              <div class="skill-card">Tailwind</div>
+              <div class="skill-card">Databases</div>
+              <div class="skill-card">Responsive Design</div>
+            </div>
+          </div>
+
+          <div class="internship-block">
+            <div class="internship-tag">Current Internship</div>
+            <p>
+              Working primarily with TypeScript and Angular, while contributing to PHP-based CMS systems — gaining practical experience maintaining and developing real-world web applications.
+            </p>
+            <div class="xp-block">
+              <div class="xp-label-row">
+                <span>Proficiency</span>
+                <span id="xp-pct">0%</span>
+              </div>
+              <div class="xp-track">
+                <div class="xp-fill" id="xp-fill"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
+      <!-- PAGE 3 — PROJECTS -->
+      <div class="page page-3">
+        <div class="page-header">
+          <span class="section-num">02</span>
+          <h2 class="section-title">Projects</h2>
+        </div>
 
+        <div class="projects-grid">
 
-    <script>
-      let button = document.querySelector('.nav-bar-menu-btn');
-      button.addEventListener("click", () => {
-        button.classList.toggle("active");
-      })
-    </script>
+          <div class="project-card" id="block-1">
+            <div class="project-num">001</div>
+            <h3>eClass Application</h3>
+            <p>Full-featured eClass web app built twice — once with Avalonia/C# and again with vanilla JS/HTML/CSS.</p>
+            <div class="project-tags"><span>C#</span><span>JavaScript</span><span>HTML/CSS</span></div>
+          </div>
+
+          <div class="project-card" id="block-2">
+            <div class="project-num">002</div>
+            <h3>AI Browser Extension</h3>
+            <p>Chrome extension for smart AI-powered replies — reads the DOM from target sites and responds contextually. Lives in a private repo.</p>
+            <div class="project-tags"><span>JavaScript</span><span>AI</span><span>OpenAI API</span></div>
+          </div>
+
+          <div class="project-card" id="block-3">
+            <div class="project-num">003</div>
+            <h3>Bitcoin Price Tracker</h3>
+            <p>Live tracker pulling from multiple public APIs — shows best price and average across brokers in real time.</p>
+            <div class="project-tags"><span>JavaScript</span><span>REST APIs</span><span>Crypto</span></div>
+          </div>
+
+          <div class="project-card project-card--featured" id="block-4">
+            <div class="project-num">004</div>
+            <h3>This Portfolio</h3>
+            <p>Designed first in Excalidraw, then coded by hand. A fully custom interactive CV — the one you're looking at right now.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          </div>
+
+        </div>
+
+        <div class="xp-block xp-block--page3">
+          <div class="xp-label-row">
+            <span>Project XP</span>
+            <span id="xp-pct2">42%</span>
+          </div>
+          <div class="xp-track">
+            <div class="xp-fill" id="xp-fill2" style="width: 42%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 4 — EDUCATION -->
+      <div class="page page-4">
+        <div class="page-header">
+          <span class="section-num">03</span>
+          <h2 class="section-title">Education</h2>
+        </div>
+
+        <div class="edu-timeline">
+
+          <div class="edu-item">
+            <div class="edu-dot"></div>
+            <div class="edu-content">
+              <span class="edu-tag">Bootcamp</span>
+              <h3>Le Wagon</h3>
+              <p>Intensive 9-week full-stack bootcamp. Built multiple projects from scratch using Ruby on Rails and JavaScript.</p>
+            </div>
+          </div>
+
+          <div class="edu-connector"></div>
+
+          <div class="edu-item">
+            <div class="edu-dot"></div>
+            <div class="edu-content">
+              <span class="edu-tag">Vocational School</span>
+              <h3>IEK AKMI Elliniko</h3>
+              <p>Software development in Java, C++, and C. Final project: full-featured "eClass" web application in C#.</p>
+            </div>
+          </div>
+
+          <div class="edu-connector"></div>
+
+          <div class="edu-item">
+            <div class="edu-dot edu-dot--accent"></div>
+            <div class="edu-content">
+              <span class="edu-tag">Self-taught</span>
+              <h3>Home School</h3>
+              <p>Started building personal projects independently — exploring different languages and frameworks out of curiosity.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="edu-travel">
+          <div class="globe">
+            <div class="globe-inner">
+              <div class="land l1"></div><div class="land l2"></div>
+              <div class="land l3"></div><div class="land l4"></div>
+              <div class="land l5"></div><div class="land l6"></div>
+            </div>
+          </div>
+          <div class="travel-label">Athens, Greece</div>
+          <div class="plane">✈</div>
+        </div>
+      </div>
+
+      <!-- PAGE 5 — HOBBIES -->
+      <div class="page page-5">
+        <div class="page-header">
+          <span class="section-num">04</span>
+          <h2 class="section-title">Outside the Code</h2>
+        </div>
+
+        <div class="hobbies-grid">
+          <div class="hobby-card">
+            <div class="hobby-icon">📚</div>
+            <h3>Reading</h3>
+            <p>Big fan of self-development and non-fiction. Recently finished <em>"Is Elon Musk Satoshi"</em> — the story of Bitcoin and why it matters.</p>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">🏃</div>
+            <h3>Running</h3>
+            <p>Completed two 10km runs. Calisthenics and staying active are a consistent part of my routine.</p>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-icon">₿</div>
+            <h3>Crypto &amp; Markets</h3>
+            <p>More than just a job interest — I follow markets, study digital assets, and try to understand the bigger picture behind the technology.</p>
+          </div>
+        </div>
+
+        <div class="page5-cta">
+          <p>Want to get in touch?</p>
+          <a href="mailto:veisllarimarinos@gmail.com" class="cta-btn">Send me a message ↗</a>
+        </div>
+      </div>
+
+    </div><!-- end #different-pages -->
+
+    <footer>
+      <span>Marinos Veisllari</span>
+      <span class="footer-sep">·</span>
+      <span>Athens, Greece</span>
+      <span class="footer-sep">·</span>
+      <span>Made with love ❤️</span>
+    </footer>
+
+    <script src="index.js" defer></script>
   </body>
 </html>

@@ -1,135 +1,174 @@
+// ============================================================
+// SCROLL ENGINE
+// ============================================================
 const container = document.getElementById('different-pages');
 const pages = document.querySelectorAll('.page');
 let lastScrollTime = 0;
-const SCROLL_COOLDOWN = 5000; // ms
+const SCROLL_COOLDOWN = 4000;
+const SCROLL_COOLDOWN_PAGE_2 = 8000;
 let currentIndex = 0;
 let isScrolling = false;
 const WHEEL_THRESHOLD = 30;
-const visitedPages = new Set(); // store indices of pages already viewed
-
-// Message
-// const msg = document.createElement('div');
-// msg.textContent = "Nooooo, you are trying to move too fast!";
-// Object.assign(msg.style, {
-//   position: 'fixed',
-//   top: '20px',
-//   left: '50%',
-//   transform: 'translateX(-50%)',
-//   background: 'rgba(255, 255, 0, 0.9)',
-//   padding: '10px 20px',
-//   borderRadius: '10px',
-//   fontFamily: 'Georgia, serif',
-//   fontSize: '1.2rem',
-//   color: '#000',
-//   boxShadow: '0 4px 6px rgba(0,0,0,0.2)',
-//   zIndex: 9999,
-//   display: 'none'
-// });
-// document.body.appendChild(msg);
-
-// function showMessage(duration = 2000) {
-//   msg.style.display = 'block';
-//   setTimeout(() => { msg.style.display = 'none'; }, duration);
-// }
+const visitedPages = new Set([0]);
 
 function scrollToPage(index) {
   isScrolling = true;
   pages[index].scrollIntoView({ behavior: 'smooth' });
   currentIndex = index;
 
-  visitedPages.add(index);
-
   if (!visitedPages.has(index)) {
-    setTimeout(() => { isScrolling = false; }, SCROLL_COOLDOWN);
-  } else {
-    isScrolling = false;
+    visitedPages.add(index);
+    if (index === 1) triggerPage2();
+    if (index === 2) triggerPage3();
+    if (index === 4) triggerPage5();
   }
+
+  setTimeout(() => { isScrolling = false; }, visitedPages.has(index) ? 800 : 1000);
 }
 
-// WHELL SCROLL MAINLY FOR PC
 container.addEventListener('wheel', (e) => {
-  if (Math.abs(e.deltaY) < WHEEL_THRESHOLD){
-    e.preventDefault();
-    return;
-  }
-
-  const now = Date.now();
-
-  // THIS LOGIC HANDLES THE SCROLL ON VISITED PAGES = 1sec
-  const nextIndex = e.deltaY > 0 ? currentIndex + 1 : currentIndex - 1;
-  if (nextIndex >= 0 && nextIndex < pages.length && visitedPages.has(nextIndex)) {
-    if (isScrolling) return;
-
-    scrollToPage(nextIndex);
-
-    isScrolling = true;
-    setTimeout(() => {
-      isScrolling = false;
-    }, 1000);
-
-    return;
-  }
-
-  // THIS LOGIC HANDLES THE SCROLL ON NEW PAGES = 5sec
-  if (isScrolling || now - lastScrollTime < SCROLL_COOLDOWN) {
-    e.preventDefault();
-    return;
-  }
-
   e.preventDefault();
-  lastScrollTime = now;
-
-  if (e.deltaY > 0 && currentIndex < pages.length - 1) scrollToPage(currentIndex + 1);
-  if (e.deltaY < 0 && currentIndex > 0) scrollToPage(currentIndex - 1);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// TOUCH SCROLL FOR PHONES
-let startY = 0;
-
-container.addEventListener('touchstart', (e) => {
-  startY = e.touches[0].clientY;
-}, { passive: true });
-
-container.addEventListener('touchend', (e) => {
-  const endY = e.changedTouches[0].clientY;
-  const diff = startY - endY;
-
-  if (Math.abs(diff) < 50) return; // ignore small swipes
+  if (Math.abs(e.deltaY) < WHEEL_THRESHOLD) return;
 
   const now = Date.now();
-  const nextIndex = diff > 0 ? currentIndex + 1 : currentIndex - 1;
+  const dir = e.deltaY > 0 ? 1 : -1;
+  const nextIndex = currentIndex + dir;
 
   if (nextIndex < 0 || nextIndex >= pages.length) return;
 
-  // If page already visited, apply short cooldown
   if (visitedPages.has(nextIndex)) {
-    if (isScrolling) return; // prevent infinite scrolling
-
+    if (isScrolling) return;
     scrollToPage(nextIndex);
-
-    // Start short cooldown for 1s
-    isScrolling = true;
-    setTimeout(() => { isScrolling = false; }, 1000);
-
     return;
   }
 
-  // Normal cooldown logic for new pages
-  if (isScrolling || now - lastScrollTime < SCROLL_COOLDOWN) return;
+  const cooldown = currentIndex === 1 ? SCROLL_COOLDOWN_PAGE_2 : SCROLL_COOLDOWN;
+  if (isScrolling || now - lastScrollTime < cooldown) return;
 
   lastScrollTime = now;
   scrollToPage(nextIndex);
+}, { passive: false });
+
+// Touch
+let startY = 0;
+container.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
+container.addEventListener('touchend', (e) => {
+  const diff = startY - e.changedTouches[0].clientY;
+  if (Math.abs(diff) < 50) return;
+  const dir = diff > 0 ? 1 : -1;
+  const nextIndex = currentIndex + dir;
+  if (nextIndex < 0 || nextIndex >= pages.length) return;
+
+  if (visitedPages.has(nextIndex)) {
+    if (isScrolling) return;
+    scrollToPage(nextIndex);
+    return;
+  }
+
+  const now = Date.now();
+  const cooldown = currentIndex === 1 ? SCROLL_COOLDOWN_PAGE_2 : SCROLL_COOLDOWN;
+  if (isScrolling || now - lastScrollTime < cooldown) return;
+  lastScrollTime = now;
+  scrollToPage(nextIndex);
 });
+
+// ============================================================
+// NAVBAR
+// ============================================================
+const menuBtn = document.getElementById('menuBtn');
+const dropdown = document.getElementById('dropdown');
+
+menuBtn.addEventListener('click', () => {
+  menuBtn.classList.toggle('active');
+  dropdown.classList.toggle('open');
+});
+
+document.addEventListener('click', (e) => {
+  if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+    menuBtn.classList.remove('active');
+    dropdown.classList.remove('open');
+  }
+});
+
+// ============================================================
+// PAGE 1 — Scroll hint
+// ============================================================
+setTimeout(() => {
+  const hint = document.getElementById('scroll-hint');
+  if (hint) hint.style.opacity = '0';
+}, 3500);
+
+// ============================================================
+// PAGE 2 — Skills
+// ============================================================
+let page2Triggered = false;
+
+function triggerPage2() {
+  if (page2Triggered) return;
+  page2Triggered = true;
+
+  const cards = document.querySelectorAll('.skill-card');
+  const total = cards.length;
+  const xpPerCard = 42 / total;
+  let xp = 0;
+
+  cards.forEach((card, i) => {
+    const delay = i * 180;
+    card.style.animation = `stepFadeIn 0.5s ease ${delay}ms forwards`;
+
+    setTimeout(() => {
+      xp = Math.min(xp + xpPerCard, 42);
+      const fill = document.getElementById('xp-fill');
+      const pct = document.getElementById('xp-pct');
+      if (fill) fill.style.width = xp + '%';
+      if (pct) pct.textContent = Math.round(xp) + '%';
+    }, delay);
+  });
+}
+
+// ============================================================
+// PAGE 3 — Projects (staggered reveal)
+// ============================================================
+let page3Triggered = false;
+
+function triggerPage3() {
+  if (page3Triggered) return;
+  page3Triggered = true;
+
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach((card, i) => {
+    setTimeout(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, i * 150);
+  });
+
+  // Animate XP bar
+  setTimeout(() => {
+    const fill = document.getElementById('xp-fill2');
+    const pct = document.getElementById('xp-pct2');
+    if (fill) fill.style.width = '72%';
+    if (pct) pct.textContent = '72%';
+  }, 800);
+}
+
+// ============================================================
+// PAGE 5 — Hobbies
+// ============================================================
+let page5Triggered = false;
+
+function triggerPage5() {
+  if (page5Triggered) return;
+  page5Triggered = true;
+
+  const cards = document.querySelectorAll('.hobby-card');
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(16px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    setTimeout(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }, i * 150 + 300);
+  });
+}
