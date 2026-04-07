@@ -401,6 +401,33 @@ footer {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+.internship-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.internship-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.internship-list li {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.internship-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
 .internship-block {
   background: var(--bg-card);
   border: 1px solid var(--border);
